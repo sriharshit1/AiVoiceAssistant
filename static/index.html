@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ARIA — Voice Assistant</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+
+<!-- ── HEADER ──────────────────────────────────────────── -->
+<header>
+  <div class="logo">ARIA <span>voice assistant</span></div>
+  <div class="header-pills">
+    <div class="pill active" id="pillModel">—</div>
+    <div class="pill"        id="pillVoice">—</div>
+    <div class="pill"        id="pillTurns">0 turns</div>
+    <button class="pill" id="resetBtn"
+            style="cursor:pointer;background:none;color:#c0392b;border-color:#5a1a1a">
+      ⟳ reset
+    </button>
+  </div>
+</header>
+
+<!-- ── MAIN LAYOUT ─────────────────────────────────────── -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">Session Memory</div>
+      <div id="memoryFacts" class="stats" style="color:var(--text-dim);font-size:12px">
+        No facts learned yet.
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">Documents</div>
+      <div id="docList"></div>
+      <div class="upload-zone" id="uploadZone"
+           onclick="document.getElementById('fileInput').click()">
+        📎 Drop or click to upload<br/>PDF · TXT · MD · CSV · PY
+      </div>
+      <input type="file" id="fileInput"
+             accept=".pdf,.txt,.md,.csv,.py,.js,.json"/>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">Session Stats</div>
+      <div class="stats" id="stats">
+        <div>Duration: <b id="statDuration">0s</b></div>
+        <div>Turns: <b id="statTurns">0</b></div>
+        <div>Docs: <b id="statDocs">0</b></div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">Capabilities</div>
+      <div class="stats">
+        <div>🔍 Web search</div>
+        <div>📄 Document Q&amp;A</div>
+        <div>⚙️ Code execution</div>
+        <div>🧠 Session memory</div>
+        <div>🌤️ Live weather</div>
+        <div>🕐 Time &amp; date</div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- CHAT AREA -->
+  <div class="chat-area">
+
+    <!-- Messages -->
+    <div id="messages"></div>
+
+    <!-- Status bar -->
+    <div class="status-bar">
+      <div class="status-dot" id="statusDot"></div>
+      <span id="statusText">Ready</span>
+    </div>
+
+    <!-- Input -->
+    <div class="input-area">
+      <canvas id="waveform"></canvas>
+      <div class="input-row">
+        <textarea id="textInput" rows="1"
+                  placeholder="Ask anything… or press 🎤 to speak"></textarea>
+        <button class="btn" id="voiceBtn" title="Click to start recording">🎤</button>
+        <button class="btn" id="sendBtn"  title="Send">↑</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── SCRIPTS ──────────────────────────────────────────── -->
+<script src="/static/script.js"></script>
+
+</body>
+</html>
