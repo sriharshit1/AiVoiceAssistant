@@ -20,7 +20,7 @@ import soundfile as sf
 import uvicorn
 from fastapi import (
     FastAPI, File, HTTPException,
-    UploadFile, WebSocket, WebSocketDisconnect, StaticFiles
+    UploadFile, WebSocket, WebSocketDisconnect,
 )
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
